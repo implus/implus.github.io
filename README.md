@@ -1,2 +1,1 @@
-# implus.github.io
-implus' blog
+# whai362.github.io
