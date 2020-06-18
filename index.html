@@ -222,7 +222,7 @@
     <div style="margin: 0px auto; width: 100%;">
         <img title="implus" style="float: left; padding-left: .01em; height: 130px;"
              src="./resources/images/me.png">
-        <div style="padding-left: 10em; vertical-align: top; height: 120px;">
+        <div style="padding-left: 20em; vertical-align: top; height: 120px;">
             <span style="line-height: 150%; font-size: 20pt;">Xiang Li (李翔)</span><br>
             <span> <a href="http://cs.njust.edu.cn/">Department of Computer Science and Technology, Nanjing University of Science and Technology (NJUST)</a></span><br>
             <span><strong>Address</strong>: 200 Avenue, Xuanwu District, Nanjing, China</span><br>
@@ -240,15 +240,15 @@
         </h2>
         <div class="paper">
             I got my PhD degree from the Department of Computer Science and Technology, Nanjing University of Science and Technology (NJUST) in 2020.
-            I started my postdoctoral career in NJUST as a candidate for the <a href="https://zhuanlan.zhihu.com/p/147471409">2020 Postdoctoral Innovative Talent Program</a>
+            I started my postdoctoral career in NJUST as a candidate for the <a href="https://zhuanlan.zhihu.com/p/147471409">2020 Postdoctoral Innovative Talent Program</a>.
             My advisor is <a href="http://202.119.85.163/open/TutorInfo.aspx?dsbh=tLbjVM9T1OzsoNduSpyHQg==&yxsh=4iVdgPyuKTE=&zydm=L-3Jh59wXco=">Prof. Jian Yang</a>.
             My vice-advisor is <a href="http://www.xlhu.cn/">Prof. Xiaolin Hu</a> from Tsinghua University.
-            In 2016, I spent 8 months as a research intern in Microsoft Research Asia, supervised by <a href="https://scholar.google.com/citations?user=Bl4SRU0AAAAJ&hl=zh-CN">Tao Qin</a> and <a href="https://scholar.google.com/citations?user=Nh832fgAAAAJ&hl=zh-CN">Tieyan Liu</a>
+            In 2016, I spent 8 months as a research intern in Microsoft Research Asia, supervised by <a href="https://scholar.google.com/citations?user=Bl4SRU0AAAAJ&hl=zh-CN">Tao Qin</a> and <a href="https://scholar.google.com/citations?user=Nh832fgAAAAJ&hl=zh-CN">Tieyan Liu</a>.
             I am also a long-term visiting scholar at <a href="https://www.momenta.cn/">Momenta</a>, mainly designing monocular perception algorithm.
             <br><br>
 
             My recent works are mainly on monocular perception, object detection/recognition,
-            unsupervised training, deep neural networks exploration and neural architecture design.
+            unsupervised learning, deep neural networks exploration and neural architecture design.
 
             <br><br>
             <!-- <p style='color:red'><strong>I am looking for a postdoctoral position. Please feel free to contact me through the email.</strong></p> -->
@@ -287,25 +287,39 @@
     <div class="section">
         <h2 id="confpapers">Selected Publications</h2>
 
-        <div class="paper"><img class="paper" src="./resources/paper_icon/ICCV_2019_PAN.png"
-                                title="Efficient and Accurate Arbitrary-Shaped Text Detection with Pixel Aggregation Network">
-            <div><strong>Efficient and Accurate Arbitrary-Shaped Text Detection with Pixel Aggregation Network</strong><br>
-                <strong>Wenhai Wang</strong>*, Enze Xie*, Xiaoge Song, Yuhang Zang, Wenjia Wang, Tong Lu, Gang Yu, Chunhua Shen<br>
-                in ICCV, 2019<br>
-                [<a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Wang_Efficient_and_Accurate_Arbitrary-Shaped_Text_Detection_With_Pixel_Aggregation_Network_ICCV_2019_paper.pdf">Paper</a>]
-                [<a href="./resources/posters/ICCV_2019_PAN.pdf">Poster</a>]
-                [<a href="./resources/bibtex/ICCV_2019_PAN.txt">BibTex</a>]
-                <!--[<a href="">Code</a>]-->
+        <div class="paper"><img class="paper" src="./resources/paper_icon/CVPR_2019_SKNet.png"
+                                title="Selective kernel networks">
+            <div><strong>Selective kernel networks</strong><br>
+                <strong>Xiang Li</strong>*, Wenhai Wang, Xiaolin Hu, Jian Yang<br>
+                in CVPR, 2019<br>
+                [<a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Li_Selective_Kernel_Networks_CVPR_2019_paper.pdf">Paper</a>]
+                [<a href="./resources/bibtex/CVPR_2019_SKNet.txt">BibTex</a>]
+                [<a href="https://github.com/implus/PytorchInsight">Code</a>]<img src="https://img.shields.io/github/stars/implus/PytorchInsight?style=social"/>
                 <br>
-                <alert>We propose an efficient method for arbitrary-shaped text detection.</alert>
+                <alert>We propose a selective kernel mechanism for convolution.</alert>
             </div>
             <div class="spanner"></div>
         </div>
 
+        <div class="paper"><img class="paper" src="./resources/paper_icon/ICCV_2019_PAN.png"
+                                title="Understanding the disharmony between weight normalization family and weight decay">
+            <div><strong>Understanding the disharmony between weight normalization family and weight decay</strong><br>
+                <strong>Xiang Li</strong>*, Shuo Chen, Jian Yang<br>
+                in AAAI, 2020<br>
+                [<a href="https://www.aaai.org/Papers/AAAI/2020GB/AAAI-LiX.1379.pdf">Paper</a>]
+                <!--[<a href="">Code</a>]-->
+                <br>
+                <alert>We explore and address the disharmony between weight normalization family and weight decay.</alert>
+            </div>
+            <div class="spanner"></div>
+        </div>
+
+
+
         <div class="paper"><img class="paper" src="./resources/paper_icon/CVPR_2019_PSENet.png"
                                 title="Shape Robust Text Detection with Progressive Scale Expansion Network">
             <div><strong>Shape Robust Text Detection with Progressive Scale Expansion Network</strong><br>
-                <strong>Wenhai Wang</strong>*, Enze Xie*, Xiang Li, Wenbo Hou, Tong Lu, Gang Yu, Shuai Shao<br>
+                Wenhai Wang*, Enze Xie*, <strong>Xiang Li</strong>*, Wenbo Hou, Tong Lu, Gang Yu, Shuai Shao<br>
                 in CVPR, 2019<br>
                 [<a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_Shape_Robust_Text_Detection_With_Progressive_Scale_Expansion_Network_CVPR_2019_paper.pdf">Paper</a>]
                 [<a href="./resources/posters/CVPR_2019_PSENet.pdf">Poster</a>]
@@ -320,7 +334,7 @@
         <div class="paper"><img class="paper" src="./resources/paper_icon/IJCAI_2018_MixNet.png"
                                 title="Mixed Link Networks">
             <div><strong>Mixed Link Networks</strong><br>
-                <strong>Wenhai Wang</strong>*, Xiang Li*, Jian Yang, Tong Lu<br>
+                Wenhai Wang*, <strong>Xiang Li</strong>*, Jian Yang, Tong Lu<br>
                 in IJCAI, 2018<br>
                 [<a href="https://www.ijcai.org/Proceedings/2018/0391.pdf">Paper</a>]
                 [<a href="./resources/posters/IJCAI_2018_MixNet.pdf">Poster</a>]
@@ -328,34 +342,6 @@
                 [<a href="https://github.com/DeepInsight-PCALab/MixNet">Code</a>]<img src="https://img.shields.io/github/stars/DeepInsight-PCALab/MixNet?style=social"/>
                 <br>
                 <alert>We proposed an parameter-efficient convolutional neural networks for image classification. </alert>
-            </div>
-            <div class="spanner"></div>
-        </div>
-
-        <div class="paper"><img class="paper" src="./resources/paper_icon/CVPR_2019_SKNet.png"
-                                title="Selective Kernel Networks">
-            <div><strong>Selective Kernel Networks</strong><br>
-                Xiang Li, <strong>Wenhai Wang</strong>, Xiaolin Hu, Jian Yang<br>
-                in CVPR, 2019<br>
-                [<a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Li_Selective_Kernel_Networks_CVPR_2019_paper.pdf">Paper</a>]
-                [<a href="./resources/bibtex/CVPR_2019_SKNet.txt">BibTex</a>]
-                [<a href="https://github.com/implus/SKNet">Code</a>]<img src="https://img.shields.io/github/stars/implus/SKNet?style=social"/>
-                <br>
-                <alert> We proposed a dynamic selection mechanism in convolutional neural networks.</alert>
-            </div>
-            <div class="spanner"></div>
-        </div>
-
-        <div class="paper"><img class="paper" src="./resources/paper_icon/CVPR_2020_PolarMask.png"
-                                title="PolarMask: Single Shot Instance Segmentation with Polar Representation">
-            <div><strong>PolarMask: Single Shot Instance Segmentation with Polar Representation</strong><br>
-                Enze Xie*, Peize Sun*, Xiaoge Song*, <strong>Wenhai Wang</strong>, Chunhua Shen, Ping Luo<br>
-                in CVPR, 2020 (<strong>oral presentation</strong>)<br>
-                [<a href="https://arxiv.org/pdf/1909.13226.pdf">Paper</a>]
-                [<a href="./resources/bibtex/CVPR_2020_PolarMask.txt">BibTex</a>]
-                [<a href="https://github.com/xieenze/PolarMask">Code</a>]<img src="https://img.shields.io/github/stars/xieenze/PolarMask?style=social"/>
-                <br>
-                <alert>We introduced a Polar Representation to reformulate the instance segmentation problem.</alert>
             </div>
             <div class="spanner"></div>
         </div>
@@ -369,15 +355,14 @@
         <h2 id="confpapers">Contest</h2>
         <div class="paper">
             <ul>
+                <!--
                 <li>
                     ICDAR2019 Robust Reading Challenge on Arbitrary-Shaped Text, Task1, <a href="https://rrc.cvc.uab.es/?ch=14&com=evaluation&view=method_info&task=1&m=54491">1st Place</a>.
                 </li>
                 <li>
                     ICDAR2019 Robust Reading Challenge on Large-scale Street View Text with Partial Labeling, Task1, <a href="https://rrc.cvc.uab.es/?ch=16&com=evaluation&view=method_info&task=1&m=54537">2nd Place</a>.
                 </li>
-                <li>
-                    AI Challenger 2018 Autonomous Driving Perception Task, <a href="https://www.leiphone.com/news/201812/DZmTgOqD8TQAHf2h.html">2nd Place</a>
-                </li>
+                -->
                 <li>
                     ACM-ICPC Asia Regional Contest, Silver Medal
                 </li>
@@ -393,13 +378,12 @@
         <h2>Review Services</h2>
         <div class="paper">
             <strong>Journal Reviewer</strong><br>
-            IEEE Transactions on Multimedia (T-MM)
+            TNNLS, TIP
             <br>
 
             <strong>Conference Reviewer</strong><br>
-            IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2020<br>
-            Thirty-fourth Conference on Neural Information Processing Systems (NeurIPS), 2020<br>
-            IEEE Winter Conference on Applications of Computer Vision (WACV), 2021<br>
+            CVPR: 2019, 2020<br>
+            AAAI: 2019, 2020<br>
         </div>
     </div>
 </div>
