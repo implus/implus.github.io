@@ -97,6 +97,76 @@
             font-size: 12pt;
         }
 
+        /* 添加模态框相关样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: transparent;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .zoom-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        .zoom-btn {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .zoom-btn:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        /* 为Honors Gallery中的图片添加鼠标样式 */
+        .honors-gallery-img {
+            cursor: pointer;
+        }
+
         * {
             margin: 0pt;
             padding: 0pt;
@@ -200,6 +270,50 @@
         div.paper pre {
             font-size: 0.9em;
         }
+        
+        /* 导航栏样式 */
+        .nav-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-sidebar li {
+            margin: 10px 0;
+            padding: 0;
+        }
+        
+        .nav-sidebar a {
+            display: block;
+            padding: 5px 10px;
+            color: #1772d0;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-sidebar a:hover {
+            background-color: #f0f0f0;
+            color: #f09228;
+        }
+        
+        /* 平滑滚动效果 */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
@@ -218,6 +332,18 @@
 
 
 <body>
+<!-- 左侧导航栏 -->
+<div class="nav-sidebar">
+    <ul>
+        <li><a href="#about-me">About Me</a></li>
+        <li><a href="#students">Team</a></li>
+        <li><a href="#confpapers">Honor</a></li>
+        <li><a href="#honors_gallery">Honors Gallery</a></li>
+        <li><a href="#experience">News</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#review">Review Services</a></li>
+    </ul>
+</div>
 <div style="margin-bottom: 1em; border: 1px solid #ddd; background-color: #fff; padding: 1em; height: 130px;">
     <div style="margin: 0px auto; width: 100%;">
         <img title="implus" style="float: left; padding-left: .01em; height: 130px;"
@@ -235,7 +361,7 @@
 
 <div style="clear: both;">
     <div class="section">
-        <h2>About Me [<a href="https://github.com/implus">GitHub</a>]
+        <h2 id="about-me">About Me [<a href="https://github.com/implus">GitHub</a>]
             [<a href="https://scholar.google.com/citations?user=oamjJdYAAAAJ&hl=zh-CN">Google Scholar</a>]
 	    [<a href="https://github.com/IMPlus-PCALab">Research Group</a>]
             <!--[<a href="./resources/cv/wwh_cv.pdf">CV</a>])-->
@@ -251,13 +377,15 @@
 
             My recent works are mainly on:
 	    <ul>
+        <li>Intelligent Research Service</li>
+        <li>LLM Agent</li>
 		<li>neural architecture design, CNN/Transformer</li>
 		<li>object detection/recognition</li>
 		<li>unsupervised learning</li>
 		<li>knowledge distillation</li>
 	    </ul>
             <p style='color:red'><strong>
-                 We are looking for self-motivated PhD candidates! Please feel free to contact me through the email (attach your CV).
+                 We are looking for self-motivated students! Please feel free to contact me through the email (attach your CV).
 		 During the PhD career, you can have:
 		 <ul> 
 			<li>joint supervision with well-known research institute (e.g., Megvii, SenseTime Research, Huawei Noah's Ark Lab, BAAI)</li>
@@ -273,10 +401,286 @@
 
 <div style="clear: both;">
     <div class="section">
+        <h2 id="students">Team</h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-left: 30px; margin-top: 30px;">
+            <!-- 副教授组 -->
+            <h3 style="width: 100%; margin-bottom: 15px;">副教授</h3>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/戴一冕.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">戴一冕</h3>
+                <p><strong>状态:</strong> 副教授 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">红外小目标</span> </p>
+                <p><strong>成果:</strong> 主持发布 SIRST V1、SIRST V2、DenseSIRST、HazyDet、GrokLST 等多个开源数据集。主持国自然青基、博士后面上等校企合作项目 5 项，主要成果发表在 IJCV、IEEE TGRS等国际知名期刊。谷歌学术引用 3500 余次引用，入选斯坦福前 2% 顶尖科学家榜单。曾获河南省教育厅科技成果二等奖（排名第二）、首届粤港澳大湾区国际算法算例大赛遥感目标检测赛道亚军、“吉林一号”杯卫星遥感应用青年创新创业大赛一等奖。 </p>
+            </div>
+
+            <hr style="width: 100%; margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+            <!-- 博士组 -->
+            <h3 style="width: 100%; margin-bottom: 15px;">博士</h3>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/杨凌风.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">杨凌风</h3>
+                <p><strong>状态:</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">多模态感知，大模型</span> </p>
+                <p><strong>成果:</strong>2021首届“征图杯”校园机器视觉人工智能大赛亚军，2022第二届计图人工智能挑战赛冠军，2022第五届开源创新大赛团体一等奖。在CVPR，NeurIPS，TPAMI 等顶级会议期刊上发表论文数篇，Google Scholar引用500+。影石Insta360自动剪辑算法研发主要成员，申请两项发明专利。2024院长奖章、优秀毕业生、博士生国家奖学金和优秀研究生干部获得者。</p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/赵鹏海.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">赵鹏海</h3>
+                <p><strong>状态:</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">智能科研服务</span> </p>
+                <p><strong>成果:</strong>“减论Agent系统”、“减论APP”算法研发负责人，推动科研流程的智能化与自动化，减论IP学术账号获得全网3万+关注，播放量近100万次，HuggingFace接口调用5000余次。获得粤港澳国际算法算例大赛三等奖，在AAAI等国际顶级会议及SCI期刊上发表多篇学术论文。未来将持续探索智能技术在科研流程中的深度融合与应用创新。</p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/李宇轩.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">李宇轩</h3>
+                <p><strong>状态:</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">遥感感知、大模型</span> </p>
+                <p><strong>成果:</strong> 2022第二届计图人工智能挑战赛冠军，2022第五届开源创新大赛团体一等奖，2022首届粤港澳大湾区国际算法算例大赛二等奖。在NeurIPS，IJCV，ICCV等顶级会议期刊上发表论文数篇，Google Scholar引用900+。2024 PRCV竞赛和2025 第七届全球校园人工智能算法精英大赛出题人。 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/陈震元.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">陈震元</h3>
+                <p><strong>状态:</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">多智能体感知、大模型</span> </p>
+                <p><strong>成果:</strong> 南开-新奥质信实验室算法架构负责人，影石Insta360自动剪辑算法研发主要成员。多次获得CVPR2020、CVPR2021不完备数据竞赛语义分割项目和目标定位项目冠军、季军。于2023年获得第三届计图挑战赛季军和第六届开源设计大赛二等奖。曾于京东探索研究院和旷视科技进行实习。申请一项PCT国际专利和两项国内专利。 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/李政.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">李政</h3>
+                <p><strong>状态:</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">多模态模型，模型压缩</span> </p>
+                <p><strong>成果:</strong> 在Kaggle竞赛中获得两次金牌，获Kaggle Master。一作在ICCV，CVPR，AAAI等会议期刊上发表多篇论文，谷歌学术引用450+。曾获研究生国家奖学金。曾在旷视科技，蚂蚁集团，阿里巴巴达摩院进行研究性实习。 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/武戈.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">武戈</h3>
+                <p><strong>状态:</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">多模态模型，模型压缩</span> </p>
+                <p><strong>成果:</strong> 2022年首届粤港澳大湾区国际算法算例大赛三等奖、2023年获得第三届计图挑战赛季军和第六届开源设计大赛二等奖。一作发表发表ECCV论文一篇。本科曾获河南省三好学生。 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/唐文浩.png" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">唐文浩</h3>
+                <p><strong>状态:</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">智能科学</span> </p>
+                <p><strong>成果:</strong> 专注于高分辨率图像分析，发表以下论文：路面病害识别：2022 ACM MM，2021, 2023 IEEE T-ITS; 计算病理学：2023 ICCV, 2024 CVPR。在硕士期间获得国家奖学金。</p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/吴俐伽.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">吴俐伽</h3>
+                <p><strong>状态：</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">大模型、智能科研服务</span> </p>
+                <p><strong>成果:</strong> “减论”APP后端研发核心团队；2024ICPC成都/沈阳银奖、2024ICPC东亚赛区决赛铜奖、2023ICPC杭州银奖、2024CCPC重庆银奖、2023CCPC深圳/秦皇岛银奖； </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/李林一.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">李林一</h3>
+                <p><strong>状态：</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">大模型、智能体</span> </p>
+                <p><strong>成果:</strong> 南开-新奥质信实验室子课题算法负责人、2023ICPC西安邀请赛银奖、蓝桥杯国一、程序设计天梯赛国一 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/彭晨旭.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">彭晨旭</h3>
+                <p><strong>状态：</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">遥感感知；交互式模型</span> </p>
+                <p><strong>成果:</strong> 获Kaggle2金3银1铜；2021 CCF BDCI婴儿超声血管瘤分割冠军; 2022百度时序动作定位大赛冠军; 2023科大讯飞PET图像分析和疾病预测竞赛冠军; 2025 CVPR第四届反无人机竞赛赛道一冠军; 2024 ICPR弱监督红外小目标检测冠军; 2024 ICPR轻量级红外小目标检测冠军; 2024 PRCV广域红外小目标检测冠军; 2024长光卫星高分辨率道路提取竞赛一等奖; 2017江苏省高等数学竞赛一等奖；2019全国大学生数学建模竞赛二等奖。在NeuroImage，Medical Physics，PRCV等会议期刊上发表论文数篇，Google Scholar引用100+。 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/王晨旭.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">王晨旭</h3>
+                <p><strong>状态:</strong> 博士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">遥感感知、半监督学习</span> </p>
+                <p><strong>成果:</strong> 专注于遥感目标检测领域，2025 CVPR第四届反无人机竞赛赛道一冠军赛道二亚军，2024长光卫星高分辨率道路提取竞赛三等奖；一作发表AAAI 2025论文一篇，二作发表NeurIPS2024论文一篇 </p>
+            </div>
+            
+
+            <hr style="width: 100%; margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+            <!-- 硕士组 -->
+            <h3 style="width: 100%; margin-bottom: 15px;">硕士</h3>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/张鑫.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">张鑫</h3>
+                <p><strong>状态:</strong> 硕士</p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">计算机视觉、遥感感知</span> </p>
+                <p><strong>成果:</strong> 获首届粤港澳大湾区国际算法算例大赛亚军、2023计图人工智能大赛三等奖、2024ISPRS遥感图像解译大赛亚军、2025 长光"吉林一号"杯遥感应用大赛冠军。一作发表CVPR论文一篇，共一发表ECCV论文一篇。本科曾获国家奖学金、重庆市优秀毕业论文、重庆大学十佳优秀共青团员。 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/李丹阳.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">李丹阳</h3>
+                <p><strong>状态:</strong> 硕士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">大模型推理分割，遥感变化检测</span> </p>
+                <p><strong>成果:</strong> 曾获：2024 ISPRS多模态遥感应用算法解译大赛冠军、2025 长光"吉林一号"杯遥感应用大赛冠军、2025 CVPR第四届反无人机竞赛赛道一冠军赛道二亚军、国家奖学金(本科)等荣誉</p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/庞天傲.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">庞天傲</h3>
+                <p><strong>状态:</strong> 硕士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论后端算法、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 全国大学生数学建模竞赛天津赛区二等奖，25届考研分数410+ </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/过翔天.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">过翔天</h3>
+                <p><strong>状态:</strong> 硕士 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">多模态模型、遥感感知</span> </p>
+                <p><strong>成果:</strong> 2022台达杯国际太阳能竞赛优秀奖，25届考研分数410+ </p>
+            </div>
+
+            <hr style="width: 100%; margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+            <!-- 本科组 -->
+            <h3 style="width: 100%; margin-bottom: 15px;">本科</h3>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/章壹程.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">章壹程</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">遥感感知、大模型</span> </p>
+                <p><strong>成果:</strong> 2024ICPC成都/杭州银奖、2024数学建模比赛天津市二等奖 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/刘砚桐.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">刘砚桐</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论后端、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 2024ICPC成都/杭州银奖、2024ICPC西安邀请赛金奖、2025 长光"吉林一号"杯遥感应用大赛冠军 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/邢清画.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">邢清画</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">大模型、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 获得南开大学国家励志奖学金，在AAAI2025以第二作者发表论文一篇，参与减论agent部分算法的开发和优化 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/田晋宇.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">田晋宇</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">大模型、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 获得南开大学国家励志奖学金，在AAAI2025以第四作者发表论文一篇，参与减论agent部分算法的开发和优化 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/周重天.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">周重天</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论后端、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 参与减论APP后端算法的开发和优化 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/杨峥芃.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">杨峥芃</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论产品、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 第二届“吉林一号”杯卫星遥感应用青年创新创业大赛 赛题D三等奖，互联网+减论项目主要负责人 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/王雨萌.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">王雨萌</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论算法、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 获得南开大学公能奖学金，2024全国大学生数学建模竞赛天津赛区二等奖，南开火山杯减论算法负责人 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/李政霖.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">李政霖</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论产品、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 减论产品设计社区板块负责人、减论基金申请 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/郭鑫隆.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">郭鑫隆</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论产品、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 获得南开大学学业优秀奖学金，减论产品经理 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/李颖贤.png" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">李颖贤</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">多智能体感知、大模型</span> </p>
+                <p><strong>成果:</strong> 获得南开大学国家奖学金，参与POI算法研究和AVT相关工作 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/李昱.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">李昱</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论产品、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 减论产品经理及UI设计、减论基金申请 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/刘祥宇.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">刘祥宇</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论产品、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 减论产品经理及我的板块设计 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/钱俊玮.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">钱俊玮</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论算法、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 减论平台作者定位与引用评价研发负责人 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/宋常秀.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">宋常秀</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">多智能体感知、大模型</span> </p>
+                <p><strong>成果:</strong> 获得南开大学国家励志奖学金，参与POI算法研究工作 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/陶文烁.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">陶文烁</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论算法、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 南开大学物理学术竞赛作品赛一等奖、互联网+减论项目主要负责人 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/向宇涵.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">向宇涵</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论算法、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 获得南开大学公能奖学金，2023全国大学生数学建模竞赛天津赛区一等奖，参与基础数据元信息提取相关工作 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/张耕嘉.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">张耕嘉</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论算法、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 南开大学公能奖学金，2023美国大学生数学建模竞赛H奖，2024全国大学生数学建模竞赛天津赛区省级二等奖，PolarDB数据库创新设计赛优胜奖 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/许洋.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">许洋</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论算法、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 南开大学公能奖学金 </p>
+            </div>
+            <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                <img src="./resources/student/本科组/朱佳慧.jpg" style="width: 180px; height: 180px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;">朱佳慧</h3>
+                <p><strong>状态:</strong> 本科 </p>
+                <p><strong>研究方向:</strong> <span style="color: #1772d0;">减论产品、智能科研服务</span> </p>
+                <p><strong>成果:</strong> 第二届“吉林一号”杯卫星遥感应用青年创新创业大赛 赛题D三等奖 </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div style="clear: both;">
+    <div class="section">
         <h2 id="confpapers">Honor</h2>
 	(See more details (codes, solutions, summaries) in <a href="https://github.com/IMPlus-PCALab/AICompetition">[AICompetition of Group Page]</a>)
         <div class="paper">
             <ul>
+        <li>
+            团队获2025年第二届“吉林一号”杯长光卫星遥感应用青年创新创业大赛<a href="https://mp.weixin.qq.com/s/ZUeLj20NYB_icv18I4JH0w"><strong>特等奖、一等奖</strong>、三等奖，</a> <strong>24,000 RMB bonus</strong>
+        </li>
 		<li>
 		    1st place of of Change Detection in High-resolution and Multi-temporal Optical Images, 2nd place of Forgery Detection in Multi-scenario Remote Sensing Images of Typical Objects in 2024 TC I Contest on <a href="https://mp.weixin.qq.com/s/tnx1cWeyt3siIjBD0civsQ">Intelligent Interpretation for Multi-modal Remote Sensing Application</a>, total <strong>13,000 RMB bonus</strong>
 		</li>
@@ -309,9 +713,136 @@
 
 <div style="clear: both;">
     <div class="section">
+        <h2 id="honors_gallery">Honors Gallery</h2>
+        <div style="margin-top: 20px;">
+            <!-- 优秀毕业论文展示区 -->
+            <h3 style="margin-bottom: 15px;">优秀毕业论文</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 30px;">
+                <div style="margin: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/优秀毕业论文_张鑫_重庆市.jpg" style="max-width: 320px; max-height: 240px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 10px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 14px;">张鑫 - 重庆市优秀毕业论文</p>
+                    </div>
+                </div>
+                <div style="margin: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/优秀毕业论文_高森森_南开大学.jpg" style="max-width: 320px; max-height: 240px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 10px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 14px;">高森森 - 南开大学优秀毕业论文</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 其他荣誉证书展示区 -->
+            <h3 style="margin-bottom: 15px;">竞赛获奖证书</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                <!-- 第一行 -->
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/长光卫星_Chainey_00.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">长光卫星杯一等奖</p>
+                    </div>
+                </div>
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/长光卫星_ReductChange_00.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">长光卫星杯特等奖</p>
+                    </div>
+                </div>
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/2024年ISPRS第一技术委员会多模态遥感应用算法智能解译大赛_基于高分辨率可见光图像的感兴趣区域内部变化智能检测_赛道冠军_00.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">ISPRS变化检测赛道冠军</p>
+                    </div>
+                </div>
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/2024年ISPRS第一技术委员会多模态遥感应用算法智能解译大赛_面向多场景的典型目标遥感图像真伪鉴别_赛道亚军_00.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">ISPRS真伪鉴别赛道亚军</p>
+                    </div>
+                </div>
+                <!-- 第二行 -->
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/7_2022计图人工智能挑战赛冠军.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">2022计图人工智能挑战赛冠军</p>
+                    </div>
+                </div>
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/8_2022粤港澳大湾区（黄埔）国际算法算例大赛遥感目标检测赛道亚军.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">2022粤港澳大湾区算法大赛亚军</p>
+                    </div>
+                </div>
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/9_2020征途杯校园机器视觉人工智能大赛亚军.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">2020征途杯校园机器视觉大赛亚军</p>
+                    </div>
+                </div>
+                <!-- 第三行 -->
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/5_2015阿里巴巴大数据竞赛冠军.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">2015阿里巴巴大数据竞赛冠军</p>
+                    </div>
+                </div>
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/6_2016滴滴研究院大数据竞赛冠军.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">2016滴滴研究院大数据竞赛冠军</p>
+                    </div>
+                </div>
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/第五届开源创新大赛-开源任务挑战赛团体一等奖.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">第五届开源创新大赛团体一等奖</p>
+                    </div>
+                </div>
+                <div style="margin: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s; width: 22%;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./resources/honors/2023计图挑战赛二等奖_00.jpg" style="max-width: 240px; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div style="padding: 8px; text-align: center; background-color: #ffffff;">
+                        <p style="margin: 0; font-size: 12px;">2023计图挑战赛二等奖</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="clear: both;">
+    <div class="section">
         <h2 id="experience">News</h2>
         <div class="paper">
             <ul>
+        <li>
+            2025-02-27: 2 papers accepted in CVPR 2025, including <a href="https://github.com/zhasion/RSAR">RSAR</a>, a sota Restricted State Angle Resolver and Rotated SAR Benchmark!
+        </li>
 		<li>
 			2024-10-07: <a href="https://arxiv.org/pdf/2403.11735">LSKNet: A foundation lightweight backbone for remote sensing</a> published in <a href="https://link.springer.com/article/10.1007/s11263-024-02247-9?utm_source=rct_congratemailt&utm_medium=email&utm_campaign=nonoa_20241007&utm_content=10.1007%2Fs11263-024-02247-9">IJCV</a>.
 		</li>
@@ -379,8 +910,8 @@
                 <li> 	2019-03-15: 3 papers (<a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Li_Selective_Kernel_Networks_CVPR_2019_paper.pdf">SKNet</a>,
 			<a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Li_Understanding_the_Disharmony_Between_Dropout_and_Batch_Normalization_by_Variance_CVPR_2019_paper.pdf">Understanding the disharmony v1</a>,
 			<a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_Shape_Robust_Text_Detection_With_Progressive_Scale_Expansion_Network_CVPR_2019_paper.pdf">PSENet</a>) accepted in CVPR 2019. </li>
-		<li> 	2017-03-01: 1 paper (<a href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Wang_Stacked_Conditional_Generative_CVPR_2018_paper.pdf">ST-CGAN</a>) accepted in CVPR 2018.  </li>
-                <li> 	2018-06-16: 1 paper (<a href="https://www.ijcai.org/Proceedings/2018/0391.pdf">MixNet</a>) accepted in IJCAI 2018. </li>
+		<li> 	2020-03-01: 1 paper (<a href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Wang_Stacked_Conditional_Generative_CVPR_2018_paper.pdf">ST-CGAN</a>) accepted in CVPR 2018.  </li>
+                <li> 	2020-06-16: 1 paper (<a href="https://www.ijcai.org/Proceedings/2018/0391.pdf">MixNet</a>) accepted in IJCAI 2018. </li>
 		<li>    2016-09-30: 1 paper (<a href="https://arxiv.org/pdf/1610.09893.pdf">LightRNN</a>) accepted in NeurIPS 2016. </li>
             </ul>
             <div class="spanner"></div>
@@ -392,7 +923,7 @@
 
 <div style="clear: both;">
     <div class="section">
-        <h2 id="confpapers">Selected Publications</h2>
+        <h2 id="publications">Selected Publications</h2>
 	(* indicates equal contribution, # corresponding author)
 
 	<div class="paper"><img class="paper" src="./resources/paper_icon/ICCV_2023_LSKNet.png"
@@ -738,9 +1269,11 @@
 
 
 
+
+
 <div style="clear: both;">
     <div class="section">
-        <h2>Review Services</h2>
+        <h2 id="review">Review Services</h2>
         <div class="paper">
             <strong>Journal Reviewer</strong><br>
 	    IEEE Transactions on Neural Networks and Learning Systems (TNNLS)<br>
@@ -764,6 +1297,108 @@
     <!--<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?d=ItPniLpvAlUyBKssdgFtKwBDg8lP1ao3ju4dmDzw6uA&cl=ffffff&w=a"></script>-->
     <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=ItPniLpvAlUyBKssdgFtKwBDg8lP1ao3ju4dmDzw6uA&co=2d78ad&cmo=3acc3a&cmn=ff5353&ct=ffffff'></script>
 </div>
+
+<!-- 图片查看模态框 -->
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <img id="modalImg" class="modal-img">
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomOut">-</button>
+            <button class="zoom-btn" id="zoomReset">重置</button>
+            <button class="zoom-btn" id="zoomIn">+</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 获取模态框元素
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = document.getElementsByClassName("close")[0];
+    const zoomIn = document.getElementById("zoomIn");
+    const zoomOut = document.getElementById("zoomOut");
+    const zoomReset = document.getElementById("zoomReset");
+    
+    // 当前缩放比例
+    let currentZoom = 1;
+    
+    // 为Honors Gallery中的所有图片添加点击事件
+    document.addEventListener('DOMContentLoaded', function() {
+        // 获取Honors Gallery部分的所有图片
+        const gallerySection = document.getElementById('honors_gallery').closest('.section');
+        const images = gallerySection.querySelectorAll('img');
+        
+        // 为每个图片添加点击事件和cursor样式
+        images.forEach(img => {
+            img.classList.add('honors-gallery-img');
+            img.onclick = function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+                currentZoom = 1;
+                modalImg.style.transform = `scale(${currentZoom})`;
+                document.body.style.overflow = "hidden"; // 防止背景滚动
+            }
+        });
+    });
+    
+    // 点击关闭按钮关闭模态框
+    closeBtn.onclick = function() {
+        closeModal();
+    }
+    
+    // 点击模态框背景关闭模态框
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+    
+    // 关闭模态框函数
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto"; // 恢复背景滚动
+    }
+    
+    // 缩放控制
+    zoomIn.onclick = function(e) {
+        e.stopPropagation();
+        currentZoom += 0.1;
+        modalImg.style.transform = `scale(${currentZoom})`;
+    }
+    
+    zoomOut.onclick = function(e) {
+        e.stopPropagation();
+        if (currentZoom > 0.5) {
+            currentZoom -= 0.1;
+            modalImg.style.transform = `scale(${currentZoom})`;
+        }
+    }
+    
+    zoomReset.onclick = function(e) {
+        e.stopPropagation();
+        currentZoom = 1;
+        modalImg.style.transform = `scale(${currentZoom})`;
+    }
+    
+    // 键盘事件处理
+    document.addEventListener('keydown', function(e) {
+        if (modal.style.display === "flex") {
+            if (e.key === "Escape") {
+                closeModal();
+            } else if (e.key === "+" || e.key === "=") {
+                currentZoom += 0.1;
+                modalImg.style.transform = `scale(${currentZoom})`;
+            } else if (e.key === "-" && currentZoom > 0.5) {
+                currentZoom -= 0.1;
+                modalImg.style.transform = `scale(${currentZoom})`;
+            } else if (e.key === "0") {
+                currentZoom = 1;
+                modalImg.style.transform = `scale(${currentZoom})`;
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
