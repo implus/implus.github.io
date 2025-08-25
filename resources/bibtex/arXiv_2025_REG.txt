@@ -1,0 +1,6 @@
+@article{wu2025representation,
+  title={Representation Entanglement for Generation: Training Diffusion Transformers Is Much Easier Than You Think},
+  author={Wu, Ge and Zhang, Shen and Shi, Ruijing and Gao, Shanghua and Chen, Zhenyuan and Wang, Lei and Chen, Zhaowei and Gao, Hongcheng and Tang, Yao and Yang, Jian and others},
+  journal={arXiv preprint arXiv:2507.01467},
+  year={2025}
+}
