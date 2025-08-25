@@ -1,0 +1,8 @@
+@inproceedings{wu2025cascade,
+  title={Cascade prompt learning for vision-language model adaptation},
+  author={Wu, Ge and Zhang, Xin and Li, Zheng and Chen, Zhaowei and Liang, Jiajun and Yang, Jian and Li, Xiang},
+  booktitle={European Conference on Computer Vision},
+  pages={304--321},
+  year={2025},
+  organization={Springer}
+}
