@@ -1,0 +1,6 @@
+@inproceedings{li2025advancing,
+  title={Advancing Textual Prompt Learning with Anchored Attributes},
+  author={Li, Zheng and Song, Yibing and Cheng, Ming-Ming and Li, Xiang and Yang, Jian},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  year={2025}
+}
